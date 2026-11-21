@@ -5,100 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>개인정보 처리방침 — 새김자막</title>
 <style>
-  :root{ --bg:#ffffff; --fg:#1a1a1a; --muted:#666666; --accent:#c0392b; --code-bg:#f2f2f2; }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17171a; --fg:#ececec; --muted:#a3a3a8; --accent:#ff7a68; --code-bg:#2a2a2f; color-scheme:dark; } }
-  :root[data-theme="dark"]{ --bg:#17171a; --fg:#ececec; --muted:#a3a3a8; --accent:#ff7a68; --code-bg:#2a2a2f; color-scheme:dark; }
+  :root{ --bg:#ffffff; --fg:#1a1a1a; --muted:#666666; --accent:#c0392b; --code-bg:#f2f2f2; --line:#dddddd; }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#17171a; --fg:#ececec; --muted:#a3a3a8; --accent:#ff7a68; --code-bg:#2a2a2f; --line:#3a3a40; color-scheme:dark; } }
+  :root[data-theme="dark"]{ --bg:#17171a; --fg:#ececec; --muted:#a3a3a8; --accent:#ff7a68; --code-bg:#2a2a2f; --line:#3a3a40; color-scheme:dark; }
   body{ max-width:680px; margin:0 auto; padding-block:48px 80px; padding-inline:20px; font-family:-apple-system,'Apple SD Gothic Neo',sans-serif; line-height:1.8; color:var(--fg); background:var(--bg); }
   h1{ font-size:1.5rem; margin-bottom:4px; }
   .updated{ color:var(--muted); font-size:0.85rem; margin-bottom:32px; }
   h2{ font-size:1.05rem; margin-top:32px; }
   h3{ font-size:0.95rem; margin-top:20px; margin-bottom:4px; }
   ul{ padding-left:22px; }
-  code{ background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:0.9em; }
+  code{ background:var(--code-bg); padding:1px 5px; border-radius:4px; font-size:0.9em; overflow-wrap:anywhere; }
   a{ color:var(--accent); }
-  .changes{ border:1px dashed var(--muted); border-radius:8px; padding:4px 16px; margin-top:48px; font-size:0.9rem; }
+  .table{ overflow-x:auto; }
+  table{ width:100%; border-collapse:collapse; font-size:0.9rem; line-height:1.6; }
+  th,td{ border-top:1px solid var(--line); padding:8px 8px 8px 0; text-align:left; vertical-align:top; }
 </style>
 </head>
 <body>
 <h1>새김자막 — 개인정보처리방침</h1>
-<p class="updated">최종 수정일: 2026-10-30</p>
+<p class="updated">최종 수정일: 2026-11-19</p>
 
-<p><b>요약: 새김자막은 기본 상태에서 어떤 사용자 데이터도 외부 서버로 전송하지 않습니다.</b> 모든 동작은 사용자의 브라우저 안에서 이루어집니다. 다만 <b>사용자가 직접 동의한 경우에만</b> 아래의 선택 기능이 동작합니다. 동의하지 않아도 새김자막의 모든 기능은 똑같이 사용할 수 있습니다.</p>
+<p><b>요약: 새김자막은 기본 상태에서 어떤 사용자 데이터도 개발자 서버로 보내지 않습니다.</b> 자막 처리와 뜻 표시는 사용자의 브라우저 안에서 이루어집니다. 곡 사전이 없는 영상에서 사용자가 <b>"Request Saegim" 버튼을 누를 때만</b> 그 영상의 ID와 한국어 자막을 보내 새 곡 사전을 만듭니다. 버튼을 쓰지 않아도 다른 기능은 똑같이 쓸 수 있습니다.</p>
+
+<p><b>적용 시점:</b> 이 방침은 "Request Saegim" 버튼이 포함된 버전부터 적용됩니다. 그 전 버전(0.5.0부터)은 안내 화면이나 팝업에서 직접 켠 사용자에 한해 재생 중 자동으로 보냈고, 0.5.0 이전 버전은 사용자 데이터를 보내지 않았습니다.</p>
+
+<h2>보내는 정보</h2>
 <ul>
-  <li><b>새 곡 사전 만들기</b> — 곡 사전이 아직 없는 곡을 볼 때, 그 영상의 ID와 한국어 자막 글자를 보내 새 곡 사전을 만듭니다. 설치 직후(이미 설치한 경우 이 기능이 들어간 업데이트 직후) 한 번 묻습니다.</li>
-  <li><b>용례 개선 참여</b>(개발 기간 2026년 12월 11일까지) — 낱말이 들어 있는 자막 문장 한 개를 보냅니다.</li>
+  <li><b>보내는 때</b> — 곡 사전이 없고 유튜브의 <b>한국어 수동 자막</b>(자동 생성·자동 번역 자막 제외)이 있는 영상에서 버튼을 누를 때. 처음 누를 때는 보내는 내용과 쓰임을 알리고 확인을 받습니다.</li>
+  <li><b>보내는 것</b> — 그 영상의 <b>영상 ID</b>, 한국어 자막의 <b>글자와 시작 시각·길이</b>, <b>확장 프로그램 버전</b>.</li>
+  <li><b>보내지 않는 것</b> — 이름, 계정, 이메일, 쿠키, 다른 영상의 시청 기록, 영상 주소의 다른 값, 사용자를 구분하는 고유 번호, 사용자가 직접 고친 자막 스크립트.</li>
+  <li><b>서버 접속 정보</b> — 인터넷 요청에는 IP 주소가 따라옵니다. 서버는 IP 주소 원본을 저장하지 않고, 아래 표의 해시 값만 남용 방지와 중복 집계 방지에 씁니다.</li>
+  <li><b>이전에 자동 전송을 직접 켠 사용자</b> — 그 설정은 사용자가 끄기 전까지 유지되어, 곡 사전이 없는 영상의 같은 정보를 재생 중에 보냅니다(같은 영상은 7일에 한 번). 새로 켜도록 권하지 않으며 팝업이나 안내 화면에서 끌 수 있습니다.</li>
 </ul>
-
-<p><b>적용 시점:</b> "새 곡 사전 만들기"는 버전 0.5.0부터, "용례 개선 참여"는 해당 기능이 포함된 버전부터 적용됩니다. 그 이전 버전은 어떤 사용자 데이터도 전송하지 않습니다.</p>
-
-<h2>수집하는 정보</h2>
-<h3>기본 상태 (동의하지 않았을 때)</h3>
-<p>없습니다. 새김자막은 이름, 이메일, 시청 기록, 검색어, 위치 등 어떤 개인 식별 정보도 수집·저장·전송하지 않습니다. 이 상태에서는 사용자의 유튜브 시청 데이터를 외부로 보내지 않습니다.</p>
-<p>곡 사전 묶음(새 곡의 뜻 데이터)은 몇 시간마다 한 번 통째로 내려받습니다. 이때는 어떤 영상을 보고 있는지 보내지 않습니다.</p>
-
-<h3>"새 곡 사전 만들기"에 동의한 경우</h3>
-<p>새 K팝 곡의 사전을 만들어 그 곡을 보는 모든 사용자에게 뜻을 보여 주기 위해, <b>사용자가 동의 화면에서 "예, 보낼게요"를 누르거나 팝업에서 직접 켠 경우에만</b> 다음을 전송합니다.</p>
-<ul>
-  <li><b>보내는 때</b> — 곡 사전이 아직 없는 영상에서, 유튜브가 제공하는 <b>한국어 수동 자막</b>(자동 생성·자동 번역 자막 제외)을 불러왔을 때. 같은 영상은 7일 안에 다시 보내지 않습니다.</li>
-  <li><b>보내는 것</b> — 그 영상의 <b>영상 ID</b>, 한국어 자막의 <b>글자와 시작 시각·길이</b>(가사), 확장 프로그램 버전.</li>
-  <li><b>보내지 않는 것</b> — 계정·이메일, 쿠키, 시청 기록(다른 영상 목록), 영상 주소의 다른 파라미터, 사용자를 구분하는 고유 번호, 사용자가 직접 고친 자막 스크립트.</li>
-  <li><b>서버 접속 정보</b> — 인터넷 요청에는 IP 주소가 따라옵니다. IP 주소는 요청 남용(과다 요청) 방지에만 쓰고 <b>24시간 뒤 삭제</b>하며, 영상 ID·자막과 연결해 저장하지 않습니다.</li>
-</ul>
-
-<h3>"용례 개선 참여"에 동의한 경우 (개발 기간 한정, 선택)</h3>
-<p>뜻 판별 규칙과 시험 세트를 만드는 데 쓰기 위해, 안내 화면에서 <b>사용자가 직접 동의 버튼을 누른 경우에만</b> 다음을 전송합니다.</p>
-<ul>
-  <li><b>보내는 것</b> — 사전에 있는 낱말이 들어 있는 자막의 <b>한국어 문장 한 개의 글자(텍스트)</b>와 그 문장에서 표시된 낱말.</li>
-  <li><b>보내지 않는 것</b> — 영상 주소(URL)·영상 ID·영상 제목·채널, 재생 시각, 계정·이메일, 사용자를 구분하는 고유 번호, 사용자가 직접 고친 자막 스크립트.</li>
-  <li><b>서버 접속 정보</b> — 서버 접속 기록(IP)은 수집한 문장과 연결해 저장하지 않습니다.</li>
-</ul>
+<p>곡 사전 묶음(곡별 뜻 데이터)은 주기적으로 통째로 내려받고, 곡을 요청한 뒤에는 준비됐는지 보려고 최대 6분 동안 30초마다 다시 받습니다. 묶음을 받을 때는 어떤 영상을 보고 있는지 보내지 않습니다.</p>
 
 <h2>사용 목적</h2>
 <ul>
-  <li>"새 곡 사전 만들기"로 받은 자막은 그 곡의 곡 사전(낱말과 뜻)을 만드는 데에만 사용합니다. 만든 곡 사전은 모든 사용자에게 내려받는 곡 사전 묶음에 들어갑니다.</li>
-  <li>"용례 개선 참여"로 받은 문장은 동음이의어의 뜻을 가르는 규칙을 만들고 시험하는 데에만 사용합니다.</li>
-  <li>광고, 사용자 분석, 판매에는 사용하지 않습니다.</li>
+  <li>받은 자막은 그 곡이 원곡 가사인지 확인하고 <b>그 곡의 곡 사전(낱말과 뜻)을 만드는 데에만</b> 씁니다.</li>
+  <li>만든 곡 사전은 곡 사전 묶음에 들어가 <b>그 곡을 보는 모든 새김자막 사용자</b>에게 쓰입니다.</li>
+  <li>영상 ID는 공식 K팝 채널의 영상인지 확인하고 곡을 구분하는 데 씁니다. 곡별 요청 수는 어떤 곡을 먼저 준비할지 정하는 데 씁니다.</li>
+  <li>광고, 사용자 분석, 신용 평가, 판매에는 쓰지 않습니다.</li>
 </ul>
 
-<h2>동의 방법과 철회</h2>
+<h2>받는 곳</h2>
 <ul>
-  <li>"새 곡 사전 만들기"는 설치 직후(이미 설치한 경우 이 기능이 들어간 업데이트 직후) 열리는 안내 화면에서 "예, 보낼게요" 또는 "아니요"를 고릅니다. 답하지 않고 화면을 닫으면 꺼진 상태로 남고, 다음 업데이트 때 한 번만 더 묻습니다.</li>
-  <li>두 기능 모두 기본값은 꺼짐이고, 동의하지 않아도 기능은 동일합니다.</li>
-  <li>언제든 확장 팝업의 설정("자막을 보내 새 곡 사전 만들기")에서 끄거나 켤 수 있으며, 끄는 즉시 전송이 중단됩니다.</li>
-  <li>이미 전송된 자막·문장에는 사용자를 구분할 수 있는 정보가 없어 어느 사용자의 것인지 알 수 없으므로, 개별 사용자의 요청으로 찾아서 삭제할 수는 없습니다.</li>
+  <li><b>개발자 서버</b> — <code>https://211.233.206.154</code> (「모두의 AI 실험실」이 제공하는 클라우드 서버, 개발자가 운영). 곡 요청을 받고 곡 사전 묶음을 내줍니다.</li>
+  <li><b>AI 서비스</b> — 「모두의 AI 실험실」이 제공하는 AI 서비스에 자막 글자와 곡 제목·아티스트를 보내 곡 사전을 만듭니다. IP 주소는 전달하지 않습니다.</li>
+  <li><b>YouTube Data API(Google)</b> — 서버 목록에 없는 영상은 영상 ID로 채널·제목·자막 유무·길이를 확인합니다. 자막과 IP 주소는 전달하지 않습니다.</li>
+  <li><b>Netlify</b> — 곡 사전 묶음을 내려받는 곳입니다. 사용자가 보낸 데이터를 받지 않습니다.</li>
+</ul>
+
+<h2>서버에 남는 것과 보관 기간</h2>
+<div class="table"><table>
+  <tr><th>항목</th><th>내용</th><th>보관</th></tr>
+  <tr><td>자막 글자</td><td>처리 대기·처리 중인 곡의 자막 글자</td><td>처리가 끝나면 바로 삭제. 가사 문장은 곡 사전·처리 기록·로그에 남기지 않습니다.</td></tr>
+  <tr><td>곡 사전</td><td>영상 ID, 아티스트, 곡 제목, 공개일, 낱말, 원어, 뜻, 표시 여부와 판정 값, 원곡 판정 결과(사유 글 제외), 요청을 보낸 확장 버전과 제출 횟수</td><td>서비스 운영 기간. 낱말·뜻은 공개 묶음으로 배포됩니다.</td></tr>
+  <tr><td>줄 지문</td><td>자막 줄을 정리해 만든 SHA-256 해시의 앞 12자리. 같은 곡인지 가리는 데 씁니다.</td><td>서비스 운영 기간</td></tr>
+  <tr><td>처리 기록</td><td>영상 ID, 처리 상태와 사유 코드, 아티스트, 곡 제목, 채널 ID, 공개일, 확장 버전, 제출 횟수, 낱말 수, 처리 시각. 거절한 영상은 영상 ID, 사유 코드, 확장 버전, 시각만 남깁니다.</td><td>서비스 운영 기간</td></tr>
+  <tr><td>곡별 요청 수</td><td>영상 ID별 합계, 처음·마지막 요청 시각. 누가 요청했는지는 없습니다.</td><td>서비스 운영 기간</td></tr>
+  <tr><td>AI 사용량</td><td>영상 ID, 모델, 사용량, 시각</td><td>서비스 운영 기간</td></tr>
+  <tr><td>IP 해시</td><td>날마다 바뀌는 비밀값으로 만든 IP 해시와 제출 시각. 영상 ID와 함께 저장하지 않습니다.</td><td>24시간 안에 삭제</td></tr>
+  <tr><td>중복 집계 표지</td><td>같은 사람의 같은 곡 요청을 하루 한 번만 세려고 IP 주소와 영상 ID를 함께 해시한 값. 서버 메모리에만 둡니다.</td><td>날이 바뀌거나 서버가 다시 시작되면 사라짐</td></tr>
+  <tr><td>일별 합계</td><td>제출 수, 영상 확인 횟수</td><td>약 7일</td></tr>
+  <tr><td>서비스 로그</td><td>영상 ID, 곡 제목, 후보 낱말, 처리 결과. IP 주소와 가사 문장은 남기지 않습니다.</td><td>서버의 로그 보관 설정에 따름</td></tr>
+</table></div>
+<p>공개 곡 사전 묶음에는 곡 제목, 아티스트, 낱말, 원어, 뜻, 표시 여부와 함께 보류되었거나 띄울 낱말이 없는 영상의 ID가 들어갑니다. 가사 문장과 요청 수는 들어가지 않습니다.</p>
+
+<h2>기기 안에 저장하는 것</h2>
+<p><code>chrome.storage.local</code>에 다음을 저장하며 개발자에게 보내지 않습니다: 사용자가 직접 고친 자막 스크립트, 새김 표시 언어, 버튼 첫 확인 여부, 자동 전송 설정, 내려받은 곡 사전 묶음, 곡 요청을 보낸 영상 ID와 시각(7일 뒤 지움), 업데이트 알림.</p>
+
+<h2>선택과 삭제</h2>
+<ul>
+  <li>버튼을 누르지 않으면 아무것도 보내지 않습니다. 첫 확인 화면에서 취소해도 보내지 않습니다.</li>
+  <li>자동 전송을 켠 적이 있으면 팝업("Also send automatically while watching")이나 안내 화면에서 끌 수 있고, 끄면 자동 전송이 멈춥니다.</li>
+  <li>확장을 삭제하면 기기 안에 저장한 내용도 함께 지워집니다.</li>
+  <li>서버에는 사용자를 구분하는 정보가 없어 누가 보낸 요청인지 찾을 수 없습니다. 특정 영상의 곡 사전과 요청 수를 지우길 원하면 영상 주소를 아래 메일로 보내 주세요.</li>
 </ul>
 
 <h2>확장 프로그램 권한과 사용 목적</h2>
 <ul>
-  <li><b>호스트 권한(<code>*://*.youtube.com/*</code>)</b> — 유튜브 페이지에서 현재 재생 중인 영상의 자막 트랙을 읽어, 한자어·외래어 위에 뜻을 보여주는 오버레이를 그리기 위해 사용합니다. 기본 상태에서 자막 데이터는 그 페이지 안에서만 처리되고 어디로도 전송되지 않습니다. 동의한 경우에만 위에 적은 내용이 전송됩니다.</li>
-  <li><b><code>storage</code> 권한</b> — 사용자가 직접 고친 자막 스크립트, 동의 여부, 내려받은 곡 사전 묶음, 곡 사전 요청을 보낸 영상 ID와 시각(7일 안 중복 전송 방지용)을 <b>기기 안(<code>chrome.storage.local</code>)</b>에만 저장합니다. 고친 자막 스크립트는 동의 여부와 관계없이 사용자의 브라우저를 벗어나지 않습니다.</li>
-  <li><b>서버 통신</b> — 확장은 별도 권한을 추가하지 않고, 동의한 경우에만 아래 "수신 서버"로 보냅니다.</li>
+  <li><b>호스트 권한(<code>*://*.youtube.com/*</code>)</b> — 재생 중인 영상의 자막을 읽어 뜻을 표시하고, 영상 제목 아래에 요청 버튼을 보이는 데 씁니다.</li>
+  <li><b><code>storage</code> 권한</b> — 위 "기기 안에 저장하는 것"에 씁니다.</li>
+  <li><b>서버 통신</b> — 별도 권한을 추가하지 않고, 위에 적은 경우에만 개발자 서버로 보냅니다. 원격 코드는 받거나 실행하지 않습니다.</li>
 </ul>
 
-<h2>수신 서버</h2>
-<ul>
-  <li>곡 사전 요청 수신·곡 사전 묶음 배포: <code>https://211.233.206.154</code> (「모두의 AI 실험실」이 제공하는 클라우드 서버, 개발자가 운영)</li>
-  <li>곡 사전 묶음 배포(내려받기 전용, 사용자 데이터를 받지 않음): Netlify</li>
-</ul>
-
-<h2>보관과 삭제</h2>
-<ul>
-  <li>"새 곡 사전 만들기"로 받은 자막(가사) 원문은 곡 사전을 만든 뒤 남기지 않습니다. 남는 것은 그 곡의 곡 사전(낱말·한자 원어·뜻)과 영상 ID뿐입니다.</li>
-  <li>서버 접속 IP 주소는 24시간 뒤 삭제합니다.</li>
-  <li>"용례 개선 참여"로 받은 문장 원문은 개발 기간이 끝나면 삭제하고, 그로부터 만든 사전·규칙·시험 세트 결과만 남깁니다.</li>
-</ul>
-
-<h2>제3자 공유와 처리</h2>
-<p>받은 자막·문장은 판매하거나 광고 목적으로 제공하지 않습니다. 저장과 분석, 곡 사전 생성을 위해 「모두의 AI 실험실」이 제공하는 클라우드와 AI 서비스를 사용합니다. 이 AI 서비스에는 자막 글자만 전달되며 IP 주소는 전달되지 않습니다. 동의하지 않은 사용자의 데이터는 수집하지 않으므로 해당 사항이 없습니다.</p>
+<h2>Chrome 웹 스토어 사용자 데이터 정책</h2>
+<p>새김자막이 받은 정보의 사용과 전송은 <b>Limited Use 요구 사항을 포함한 Chrome Web Store User Data Policy</b>를 따릅니다. 사용자 데이터는 위에 적은 단일 목적에만 쓰고, 판매하지 않으며, 광고나 신용 평가에 쓰지 않습니다. 사람이 사용자별 데이터를 읽는 일은 없고, 운영·보안·법적 의무에 필요할 때만 곡 단위 기록을 확인합니다.</p>
 
 <h2>내장 사전 데이터의 출처</h2>
-<p>이 확장은 국립국어원 「한국어 학습용 어휘 목록」(공공누리 제1유형)과 한국어 위키낱말사전(CC BY-SA 4.0)을 참고해 만든 한자어·외래어 사전을 내장하고 있습니다. 이는 사용자 개인정보가 아니라 확장 프로그램 자체에 포함된 정적 콘텐츠입니다.</p>
+<p>이 확장은 국립국어원 「한국어 학습용 어휘 목록」(공공누리 제1유형), 국립국어원 우리말샘(CC BY-SA 2.0 KR), 한국어 위키낱말사전(CC BY-SA 4.0)을 바탕으로 만든 사전을 내장합니다. 이는 사용자 개인정보가 아니라 확장 프로그램에 포함된 정적 콘텐츠입니다.</p>
 
 <h2>변경</h2>
-<p>이 방침이 바뀌면 이 페이지에 갱신된 날짜와 함께 다시 게시합니다. 수집 항목이나 목적이 바뀌면 확장 안에서 다시 안내하고 동의를 받습니다.</p>
+<p>이 방침이 바뀌면 이 페이지에 갱신한 날짜와 함께 게시합니다. 수집 항목이나 목적이 바뀌면 확장 안에서 다시 안내하고 확인을 받습니다.</p>
 
 <h2>문의</h2>
 <p><a href="mailto:saegim.jamak@gmail.com">saegim.jamak@gmail.com</a></p>
 
+<h2 lang="en">English summary</h2>
+<div lang="en">
+<p>By default, Saegim sends no user data to the developer's server. Only when you press <b>Request Saegim</b> on a video without a song dictionary does it send the video ID, the Korean subtitle text with its timing, and the extension version. The first press asks you to confirm. Users who turned on automatic sending in an earlier version keep that choice until they turn it off.</p>
+<p>The data is used to check the song and build its song dictionary, which is then available to all Saegim users. It goes to the developer's server (211.233.206.154) and the Modu AI Lab AI service. The video ID may be checked with the YouTube Data API.</p>
+<p>Subtitle text is deleted when processing ends. The server keeps the song dictionary, song and processing records, hashed subtitle-line fingerprints, and a request count per video that does not say who asked. IP addresses are not stored as they are: a daily-changing hash is deleted within 24 hours.</p>
+<p>The use and transfer of information received from this extension adhere to the <b>Chrome Web Store User Data Policy, including the Limited Use requirements</b>. Data is not sold and is not used for advertising or creditworthiness.</p>
+</div>
 </body>
 </html>
